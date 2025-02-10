@@ -1,18 +1,28 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom/client';
 
-//Bootstrap
+// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
+import "bootstrap";
 
-// index.css'
-import '../styles/index.css'
+// CSS
+import '../styles/index.css';
 
-// components
-import Home from './components/Home';
+// Components
+import Semaforo from './components/Semaforo';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+function App() {
+  const [color, setColor] = useState(""); 
+
+  function elegirColor(nuevoColor) {
+    setColor(nuevoColor); 
+  }
+
+  return (
+    <div>
+      <Semaforo color={color} elegirColor={elegirColor} /> {/* Pasamos 'color' y 'elegirColor' como props */}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
